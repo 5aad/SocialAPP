@@ -1,7 +1,10 @@
 import React from 'react';
-import {View, StyleSheet, TouchableWithoutFeedback} from 'react-native';
+import {View, StyleSheet, TouchableWithoutFeedback, ToastAndroid} from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 const TopAppBar = () => {
+  const showToast = () => {
+    ToastAndroid.show("A pikachu appeared nearby !", ToastAndroid.SHORT);
+  };
   return (
     <View style={styles.topHeader}>
       {/* Left Icon */}
@@ -13,13 +16,13 @@ const TopAppBar = () => {
 
       {/* Right Three Icons */}
       <View style={styles.right__topHeader}>
-        <TouchableWithoutFeedback>
+        <TouchableWithoutFeedback onPress={() => showToast()}>
           <Icon name="edit" color="#000" size={24} />
         </TouchableWithoutFeedback>
-        <TouchableWithoutFeedback>
+        <TouchableWithoutFeedback onPress={() => showToast()}>
           <Icon name="search" color="#000" size={24} />
         </TouchableWithoutFeedback>
-        <TouchableWithoutFeedback>
+        <TouchableWithoutFeedback onPress={() => showToast()}>
           <Icon name="user" color="#000" size={24} />
         </TouchableWithoutFeedback>
       </View>
