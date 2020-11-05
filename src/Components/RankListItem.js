@@ -1,60 +1,85 @@
 import React from 'react';
-import {View, StyleSheet, Text, Image} from 'react-native';
-import {Card} from 'react-native-paper';
+import {FlatList, StyleSheet, Text, View, Image} from 'react-native';
+import {List, Paragraph, Card} from 'react-native-paper';
 
-const RankListItem = () => {
+const Data = [
+  {
+    id: '1',
+    title:
+      'If you have to change Android native code, you must have a look at the code in the example activity on your connected device and run theMetro bundler',
+  },
+  {
+    id: '2',
+    title: 'Second Item',
+  },
+  {
+    id: '3',
+    title: 'Third Item',
+  },
+];
+
+const RightContent = ({title}) => (
+  <View style={styles.right__rankListItem}>
+    <Paragraph style={styles.title__right__rankListItem}>{title}</Paragraph>
+
+    <View style={styles.nameDate__right__rankListItem}>
+      <Text style={styles.name__right__rankListItem}>User Name</Text>
+      <Text style={styles.date__right__rankListItem}>.20 days ago</Text>
+    </View>
+  </View>
+);
+
+const LeftContent = (props) => (
+  <View style={styles.left__rankListItem}>
+    <Text style={styles.num__left__rankListItem}>1</Text>
+    <Image
+      style={styles.imgSize__left__rankListItem}
+      source={{
+        uri:
+          'https://s3.amazonaws.com/static.neostack.com/img/react-slick/abstract01.jpg',
+      }}
+    />
+  </View>
+);
+
+const Item = ({title}) => (
+  <Card style={{marginVertical: 5, marginHorizontal: 16}}>
+    <List.Item
+      right={() => <RightContent title={title} />}
+      left={LeftContent}
+    />
+  </Card>
+);
+
+const CategoryListItem = () => {
+  const renderItem = ({item}) => <Item title={item.title} />;
   return (
-    <Card>
-      <View style={styles.rankListItem}>
-        <View style={styles.left__rankListItem}>
-          <Text style={styles.num__left__rankListItem}>1</Text>
-          <Image
-            style={styles.imgSize__left__rankListItem}
-            source={{
-              uri:
-                'https://s3.amazonaws.com/static.neostack.com/img/react-slick/abstract01.jpg',
-            }}
-          />
-        </View>
-
-        <View style={styles.right__rankListItem}>
-          <Text style={styles.title__right__rankListItem}>
-            If you have to change Android native code, you must have a look at
-            the code in the example activity on your connected device and run
-            the Metro bundler
-          </Text>
-
-          <View style={styles.nameDate__right__rankListItem}>
-            <Text style={styles.name__right__rankListItem}>User Name</Text>
-            <Text style={styles.date__right__rankListItem}>.20 days ago</Text>
-          </View>
-        </View>
-      </View>
-    </Card>
+    <View style={styles.container}>
+      <FlatList
+        data={Data}
+        renderItem={renderItem}
+        keyExtractor={(item) => item.id}
+      />
+    </View>
   );
 };
-
 const styles = StyleSheet.create({
-  rankListItem: {
-    display: 'flex',
-    marginHorizontal: 10,
-    marginVertical: 16,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'flex-start',
+  container: {
+    flex: 1,
+    marginTop: 20,
   },
   right__rankListItem: {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'flex-start',
-    width: 210,
+    width: 220,
   },
   left__rankListItem: {
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'flex-start',
     justifyContent: 'space-between',
-    width: 110,
+    width: 115,
   },
   nameDate__right__rankListItem: {
     display: 'flex',
@@ -68,7 +93,7 @@ const styles = StyleSheet.create({
   },
   num__left__rankListItem: {
     paddingVertical: 4,
-    paddingHorizontal: 8,
+    paddingHorizontal: 9,
     backgroundColor: '#000',
     borderRadius: 60,
     color: '#fff',
@@ -76,7 +101,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
   },
   title__right__rankListItem: {
-    fontSize: 15,
+    fontSize: 12,
     fontWeight: '500',
     justifyContent: 'space-evenly',
   },
@@ -90,5 +115,4 @@ const styles = StyleSheet.create({
     color: '#d1d1d1',
   },
 });
-
-export default RankListItem;
+export default CategoryListItem;

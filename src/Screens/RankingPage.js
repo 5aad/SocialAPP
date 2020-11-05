@@ -8,15 +8,15 @@ const RankingPage = () => {
   return (
     <SafeAreaView style={styles.rankingPage}>
       <TopAppBar />
-      <View style={styles.rankingPage__container}>
-        <Text style={styles.rankingPage__headings}>Most Viewed Post</Text>
-        {/* DropDown */}
-        <CategoryDropdown />
-        {/* Tabs */}
 
-        {/* Ranking List */}
-        <RankListItem/>
-      </View>
+      <Text style={styles.rankingPage__headings}>Most Viewed Post</Text>
+      {/* DropDown */}
+      <CategoryDropdown />
+      {/* Tabs */}
+
+      {/* Ranking List */}
+
+      <RankListItem />
     </SafeAreaView>
   );
 };
