@@ -1,6 +1,7 @@
 import React from 'react';
 import {SafeAreaView, Text, StyleSheet, View} from 'react-native';
 import CategoryDropdown from '../Components/CategoryDropdown';
+import RankListItem from '../Components/RankListItem';
 import TopAppBar from '../Components/TopAppBar';
 
 const RankingPage = () => {
@@ -14,6 +15,7 @@ const RankingPage = () => {
         {/* Tabs */}
 
         {/* Ranking List */}
+        <RankListItem/>
       </View>
     </SafeAreaView>
   );

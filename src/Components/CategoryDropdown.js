@@ -25,7 +25,7 @@ const CategoryDropdown = () => {
   ];
   return (
     <View>
-      <Dropdown label="Categories" data={data} useNativeDriver={true} />
+      <Dropdown label="Categories" data={data}  />
     </View>
   );
 };

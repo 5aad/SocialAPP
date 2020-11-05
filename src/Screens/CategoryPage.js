@@ -1,16 +1,18 @@
 import React from 'react';
 import {SafeAreaView, View, ScrollView, StyleSheet} from 'react-native';
-import Card from '../Components/Card';
+import {Title} from 'react-native-paper';
+import CategoryListItem from '../Components/CategoryListItem';
+import TopAppBar from '../Components/TopAppBar';
 
 const CategoryPage = () => {
   return (
-    <ScrollView>
-      <SafeAreaView>
-        <View>
-          <Card></Card>
-        </View>
-      </SafeAreaView>
-    </ScrollView>
+    <SafeAreaView style={{flex: 1}}>
+      <TopAppBar />
+      <Title style={{marginHorizontal: 16, marginVertical: 5}}>
+        Category:{' '}
+      </Title>
+      <CategoryListItem />
+    </SafeAreaView>
   );
 };
 
