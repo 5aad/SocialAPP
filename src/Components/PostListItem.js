@@ -96,8 +96,7 @@ const Item = ({title}) => (
     style={{
       marginVertical: 5,
       marginHorizontal: 16,
-      paddingVertical: 10,
-      paddingLeft: 10,
+
     }}>
     <CoverImage />
     <View style={styles.con}>
@@ -133,7 +132,9 @@ const styles = StyleSheet.create({
   },
   con: {
     flexDirection: 'row',
-    marginTop:10
+    marginTop:10,
+    paddingLeft: 10,
+    paddingBottom:10,
   },
   right__rankListItem: {
     flexShrink: 1,
