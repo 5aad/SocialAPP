@@ -33,8 +33,6 @@ const UserPage = () => {
         )}
       />
 
-      <Text style={styles.userPage__headings}>User Page</Text>
-
       {/* Tabs */}
       <PostListItem />
     </SafeAreaView>
