@@ -38,15 +38,5 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
   },
-  userPage__container: {
-    marginHorizontal: 16,
-    marginVertical: 10,
-  },
-  userPage__headings: {
-    fontSize: 21,
-    fontWeight: '600',
-    marginBottom: 10,
-    textAlign: 'center',
-  },
 });
 export default UserPage;

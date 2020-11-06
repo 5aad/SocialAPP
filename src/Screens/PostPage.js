@@ -1,10 +1,25 @@
-import React from 'react';
-import {SafeAreaView, Text, View, StyleSheet, ScrollView, ToastAndroid} from 'react-native';
+import React, {useState} from 'react';
+import {
+  SafeAreaView,
+  Text,
+  View,
+  StyleSheet,
+  ScrollView,
+  ToastAndroid,
+} from 'react-native';
 import CategoryDropdown from '../Components/CategoryDropdown';
 import TopAppBar from '../Components/TopAppBar';
 import {useTheme, TextInput, Button} from 'react-native-paper';
 const PostPage = () => {
+  const [count, setCount] = useState(0);
+  const [theArray, setTheArray] = useState([]);
   const {colors} = useTheme();
+
+  const increment = () => {
+    setCount(count + 1);
+    setTheArray([...theArray, count]);
+  };
+
   const showToast = () => {
     ToastAndroid.show('A pikachu appeared nearby !', ToastAndroid.SHORT);
   };
@@ -25,6 +40,7 @@ const PostPage = () => {
           <CategoryDropdown />
 
           <Text style={styles.postPage__headings}>Options:</Text>
+
           <View style={styles.postPage__optionContainer}>
             <Text style={styles.postPage__optionNum}>#1</Text>
             <TextInput
@@ -34,11 +50,24 @@ const PostPage = () => {
               maxLength={150}
             />
           </View>
+
+          {theArray.map((it) => (
+            <View style={styles.postPage__optionContainer}>
+              <Text style={styles.postPage__optionNum}>#1</Text>
+              <TextInput
+                style={styles.postPage__inputText}
+                label="Outlined input"
+                mode="outlined"
+                maxLength={150}
+              />
+            </View>
+          ))}
+
           <Button
             color={colors.accent}
             mode="contained"
-            onPress={() => showToast()}>
-            Press me
+            onPress={() => increment()}>
+            Add More Option
           </Button>
         </View>
       </SafeAreaView>

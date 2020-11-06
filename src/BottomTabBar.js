@@ -9,6 +9,7 @@ import RankingPage from './Screens/RankingPage';
 import MainPage from './Screens/MainPage';
 import PostPage from './Screens/PostPage';
 import UserPage from './Screens/UserPage';
+import PostDetailPage from './Screens/PostDetailPage';
 const Tabs = AnimatedTabBarNavigator();
 
 const TabBarIcon = (props) => {
@@ -90,7 +91,7 @@ export default () => (
 
     <Tabs.Screen
       name="Favorite"
-      component={UserPage}
+      component={PostDetailPage}
       options={{
         tabBarIcon: ({focused, color, size}) => (
           <TabBarIcon

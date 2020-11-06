@@ -7,7 +7,7 @@ import {
   Image,
   ImageBackground,
 } from 'react-native';
-import {List, Paragraph, Card, Avatar, IconButton} from 'react-native-paper';
+import {Paragraph, Card, Avatar, IconButton,  Menu, Divider,} from 'react-native-paper';
 
 const Data = [
   {
@@ -91,29 +91,43 @@ const CoverImage = () => (
   </View>
 );
 
-const Item = ({title}) => (
-  <Card
-    style={{
-      marginVertical: 5,
-      marginHorizontal: 16,
+const Item = ({title}) => {
+  const [visible, setVisible] = React.useState(false);
+  const openMenu = () => setVisible(true);
 
-    }}>
-    <CoverImage />
-    <View style={styles.con}>
-      <LeftContent />
-      <RightContent title={title} />
-      <IconButton
-      icon="dots-vertical"
-      color="#000"
-      size={16}
-      onPress={() => console.log('Pressed')}
-    />
-    </View>
-   
-  </Card>
-);
-
+  const closeMenu = () => setVisible(false);
+  return (
+    <Card
+      style={{
+        marginVertical: 5,
+        marginHorizontal: 16,
+      }}>
+      <CoverImage />
+      <View style={styles.con}>
+        <LeftContent />
+        <RightContent title={title} />
+        <Menu
+          visible={visible}
+          onDismiss={closeMenu}
+          anchor={
+            <IconButton
+              icon="dots-vertical"
+              color="#000"
+              size={16}
+              onPress={openMenu}
+            />
+          }>
+          <Menu.Item onPress={() => {}} title="Item 1" />
+          <Menu.Item onPress={() => {}} title="Item 2" />
+          <Divider />
+          <Menu.Item onPress={() => {}} title="Item 3" />
+        </Menu>
+      </View>
+    </Card>
+  );
+};
 const PostListItem = () => {
+  const [visible, setVisible] = React.useState(false);
   const renderItem = ({item}) => <Item title={item.title} />;
   return (
     <View style={styles.container}>
@@ -132,9 +146,9 @@ const styles = StyleSheet.create({
   },
   con: {
     flexDirection: 'row',
-    marginTop:10,
+    marginTop: 10,
     paddingLeft: 10,
-    paddingBottom:10,
+    paddingBottom: 10,
   },
   right__rankListItem: {
     flexShrink: 1,
