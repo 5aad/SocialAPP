@@ -1,6 +1,13 @@
 import React from 'react';
-import {FlatList, StyleSheet, Text, View, Image} from 'react-native';
-import {List, Paragraph, Card, Avatar} from 'react-native-paper';
+import {
+  FlatList,
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  ImageBackground,
+} from 'react-native';
+import {List, Paragraph, Card, Avatar, IconButton} from 'react-native-paper';
 
 const Data = [
   {
@@ -36,28 +43,78 @@ const RightContent = ({title}) => (
 
     <View style={styles.nameDate__right__rankListItem}>
       <Text style={styles.name__right__rankListItem}>User Name</Text>
+      <Text style={styles.date__right__rankListItem}>.1k views</Text>
       <Text style={styles.date__right__rankListItem}>.20 days ago</Text>
     </View>
   </View>
 );
 
 const LeftContent = (props) => (
-  <View style={styles.left__rankListItem}>
-    <Text style={styles.num__left__rankListItem}>1</Text>
+  <View>
     <Avatar.Text size={64} label="XD" />
   </View>
 );
 
+const CoverImage = () => (
+  <View style={{flex: 1}}>
+    <ImageBackground
+      source={{
+        uri:
+          'https://s3.amazonaws.com/static.neostack.com/img/react-slick/abstract01.jpg',
+      }}
+      style={{flex: 1, resizeMode: 'cover', height: 300}}>
+      <View
+        style={{
+          flex: 1,
+          justifyContent: 'flex-start',
+          alignItems: 'flex-start',
+          marginTop: 10,
+          marginLeft: 10,
+        }}>
+        <Image
+          source={{
+            uri:
+              'https://s3.amazonaws.com/static.neostack.com/img/react-slick/abstract01.jpg',
+          }}
+          style={{
+            width: 50,
+            height: 50,
+            alignItems: 'center',
+            justifyContent: 'center',
+            borderWidth: 1,
+            borderColor: '#fff',
+            borderRadius: 30,
+          }}
+        />
+      </View>
+    </ImageBackground>
+  </View>
+);
+
 const Item = ({title}) => (
-  <Card style={{marginVertical: 5, marginHorizontal: 16, padding:10}}>
+  <Card
+    style={{
+      marginVertical: 5,
+      marginHorizontal: 16,
+      paddingVertical: 10,
+      paddingLeft: 10,
+    }}>
+    <CoverImage />
     <View style={styles.con}>
-    <LeftContent/>
-    <RightContent title={title}/>
+      <LeftContent />
+      <RightContent title={title} />
+      <IconButton
+      icon="dots-vertical"
+      color="#000"
+      size={16}
+      onPress={() => console.log('Pressed')}
+    />
     </View>
+   
   </Card>
 );
 
-const CategoryListItem = () => {
+const PostListItem = () => {
   const renderItem = ({item}) => <Item title={item.title} />;
   return (
     <View style={styles.container}>
@@ -74,19 +131,18 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: 20,
   },
-  con:{
-   flexDirection:"row"
+  con: {
+    flexDirection: 'row',
+    marginTop:10
   },
   right__rankListItem: {
-    flexShrink:1,
+    flexShrink: 1,
     flexDirection: 'column',
-    marginLeft:10
+    marginLeft: 10,
   },
   left__rankListItem: {
     flexDirection: 'row',
     alignItems: 'flex-start',
-    
-   
   },
   nameDate__right__rankListItem: {
     display: 'flex',
@@ -122,4 +178,4 @@ const styles = StyleSheet.create({
     color: '#d1d1d1',
   },
 });
-export default CategoryListItem;
+export default PostListItem;
