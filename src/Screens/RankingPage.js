@@ -1,8 +1,14 @@
 import React from 'react';
-import {SafeAreaView, Text, StyleSheet, View} from 'react-native';
+import {
+  SafeAreaView,
+  Text,
+  StyleSheet,
+} from 'react-native';
 import CategoryDropdown from '../Components/CategoryDropdown';
-import RankListItem from '../Components/RankListItem';
+
+import RankTabs from '../Components/RankTabs';
 import TopAppBar from '../Components/TopAppBar';
+
 
 const RankingPage = () => {
   return (
@@ -13,11 +19,8 @@ const RankingPage = () => {
       {/* DropDown */}
       <CategoryDropdown />
       {/* Tabs */}
-
-      {/* Ranking List */}
-
-      <RankListItem />
-      
+      <RankTabs/>
+      {/* <RankListItem /> */}
     </SafeAreaView>
   );
 };
