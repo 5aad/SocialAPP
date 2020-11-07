@@ -1,58 +1,10 @@
 import React from 'react';
-import {
-  SafeAreaView,
-  Text,
-  StyleSheet,
-  View,
-  ImageBackground,
-  Image,
-} from 'react-native';
-import {
-  List,
-  IconButton,
-  Avatar,
-  useTheme,
-  Paragraph,
-  Card,
-} from 'react-native-paper';
+import {SafeAreaView, Text, StyleSheet, View, ScrollView} from 'react-native';
+import {Avatar, Paragraph, Card, Divider, Button} from 'react-native-paper';
+import CommentSection from '../Components/CommentSection';
+import IconGroup from '../Components/IconGroup';
 import TopAppBar from '../Components/TopAppBar';
-
-const UserInfo = () => (
-  <View>
-    <List.Item
-      title="Jennifer"
-      description="100k follower"
-      left={(props) => <Avatar.Text size={54} label="XD" />}
-      right={(props) => (
-        <View style={{alignItems: 'center'}}>
-          <IconButton
-            icon="account-plus"
-            color="#2a7ff6"
-            size={34}
-            onPress={() => console.log('Pressed')}
-            style={{margin: 0}}
-          />
-          <Text>follow</Text>
-        </View>
-      )}
-    />
-  </View>
-);
-
-const CoverImage = () => (
-  <View>
-    <Image
-      source={{
-        uri:
-          'https://s3.amazonaws.com/static.neostack.com/img/react-slick/abstract01.jpg',
-      }}
-      style={{
-        resizeMode: 'cover',
-        height: 200,
-      }}
-    />
-  </View>
-);
+import UserInfoSection from '../Components/UserInfoSection';
 
 const RightContent = () => (
   <View style={styles.right__rankListItem}>
@@ -75,22 +27,54 @@ const LeftContent = (props) => (
   </View>
 );
 
+const RightCommentSection = () => (
+  <View style={styles.right__rankListItem}>
+    <View style={styles.nameDate__right__rankListItem}>
+      <Text style={styles.name__right__rankListItem}>User Name</Text>
+      <Text style={styles.date__right__rankListItem}>.20 days ago</Text>
+    </View>
+    <Paragraph style={styles.title__right__rankListItem}>
+      If you have to in the example activity on your connected device and run
+      theMetro bundler
+    </Paragraph>
+    <IconGroup />
+    <Divider />
+    <Button mode="Text" onPress={() => console.log('Pressed')}>
+      20 Replis
+    </Button>
+  </View>
+);
+
 const PostDetailPage = () => {
   return (
     <SafeAreaView style={styles.postDetail}>
       <TopAppBar />
-      <Card
-        style={{
-          marginVertical: 5,
-          marginHorizontal: 16,
-        }}>
-        <UserInfo />
-        <CoverImage />
-        <View style={styles.con}>
-          <LeftContent />
-          <RightContent />
-        </View>
-      </Card>
+      <ScrollView>
+        <Card
+          style={{
+            marginVertical: 5,
+            marginHorizontal: 16,
+          }}>
+          <UserInfoSection />
+
+          <Card.Cover source={{uri: 'https://picsum.photos/700'}} />
+          <Card.Content>
+            <View style={styles.con}>
+              <LeftContent />
+              <RightContent />
+            </View>
+            <Divider />
+            <IconGroup check="true" />
+            <Divider />
+            <CommentSection />
+            <Divider />
+            <View style={styles.con}>
+              <LeftContent />
+              <RightCommentSection />
+            </View>
+          </Card.Content>
+        </Card>
+      </ScrollView>
     </SafeAreaView>
   );
 };
@@ -103,7 +87,6 @@ const styles = StyleSheet.create({
   con: {
     flexDirection: 'row',
     marginTop: 10,
-    paddingHorizontal: 10,
     paddingBottom: 10,
   },
   right__rankListItem: {
